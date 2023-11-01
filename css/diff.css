@@ -1,0 +1,80 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7; /* Light gray background color */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333; /* Dark gray background color */
+  color: #fff; /* White text color */
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 10px 0;
+}
+
+nav {
+  background-color: #444; /* Slightly darker gray background color */
+  text-align: center;
+  padding: 10px 0;
+}
+
+#about, #projects, #contact {
+  background-color: #fff; /* White background color */
+  text-align: center;
+  padding: 40px;
+  margin: 20px 0;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add box shadow */
+}
+
+h2 {
+  color: #333; /* Dark text color */
+  margin: 0;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -10px;
+}
+
+.project {
+  background-color: #f7f7f7; /* Light gray background color */
+  padding: 20px;
+  margin: 10px;
+  width: calc(33.33% - 20px); /* Three columns with margins */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add box shadow */
+  transition: 0.3s;
+  text-align: center;
+}
+
+.project:hover {
+  background-color: #333; /* Dark gray background color on hover */
+  color: #fff; /* White text color on hover */
+}
+
+.project h3 {
+  color: #444; /* Slightly darker gray heading color */
+}
+
+#theme-toggle {
+  background-color: #007BFF; /* Blue background color */
+  color: #fff; /* White text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#theme-toggle:hover {
+  background-color: #0056b3; /* Slightly darker blue background color on hover */
+}

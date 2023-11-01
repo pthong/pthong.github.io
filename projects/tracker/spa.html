@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The 4 Elements</title>
+    <link rel="stylesheet" href="fourElements.css" />
+    <style>
+      .now {
+        font-size: 200pt;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", (event) => {
+        var daysOfYear = [];
+        for (
+          let d = new Date(2021, 0, 1);
+          d <= new Date(2021, 11, 31);
+          d.setDate(d.getDate() + 1)
+        ) {
+          const pushDate = new Date(d);
+          daysOfYear.push(pushDate);
+        }
+
+        for (let day of daysOfYear) {
+          // console.log(day)
+          if (isSameDate(new Date(), day)) {
+            calender.innerHTML += `<div class='now'>${day.toDateString()}</div>`;
+          } else {
+            calender.innerHTML += `<div>${day.toDateString()}</div>`;
+          }
+        }
+      });
+      isSameDate = (d1, d2) => {
+        return (
+          d1.getDate() == d2.getDate() &&
+          d1.getMonth() == d2.getMonth() &&
+          d1.getFullYear() == d2.getFullYear()
+        );
+      };
+
+      function getWeekNumber(d) {
+        // Copy date so don't modify original
+        d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+        // Set to nearest Thursday: current date + 4 - current day number
+        // Make Sunday's day number 7
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+        // Get first day of year
+        var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        // Calculate full weeks to nearest Thursday
+        var weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+        // Return array of year and week number
+        return [d.getUTCFullYear(), weekNo];
+      }
+    </script>
+  </head>
+  <body>
+    <style>
+      body {
+        display: flex;
+      }
+
+      .first.logo {
+        /* background: green; */
+        transform: scaleX(-1);
+        margin-right: 10px;
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+        background-color: #85ffbd;
+        background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+        border-top-left-radius: 3em;
+        border-bottom-right-radius: 4em;
+        font-size: 5em;
+        border: 5px solid black;
+        padding-left: 4px;
+      }
+      .logo::first-letter {
+        transform: rotate(30deg);
+        color: white;
+        background: black;
+        font-size: 5pt;
+      }
+      .logo::first-line {
+        color: white;
+        background: black;
+        /* font-size: 5pt; */
+      }
+
+      .first.leaf {
+        transform: scaleX(-1);
+      }
+    </style>
+
+    <div class="first leaf">
+      <div class="logo first">
+        <!-- || -->
+      </div>
+      <div id="logo" class="logo">
+        <!-- ||   -->
+      </div>
+    </div>
+    <div id="eyes">
+      <div class="logo first wtf">
+        <!-- || -->
+      </div>
+      <div id="logo" class="logo">
+        <!-- || -->
+      </div>
+    </div>
+    <script>
+      requestAnimationFrame(function x() {
+        // alert(eyes);
+        window.requestAnimationFrame(x);
+      });
+    </script>
+    <!-- <div id="calender"></div> -->
+  </body>
+</html>

@@ -1,0 +1,3819 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  --color1: #3079e2;
+  --color2: #3079e2;
+  --bg: #123456;
+  background: var(--bg);
+}
+body h1 {
+  color: #3079e2;
+  font-family: "Roboto Mono";
+  position: absolute;
+  font-size: 16px;
+  top: 50px;
+  left: 50px;
+  font-weight: 100;
+  z-index: 999;
+  background: #222;
+}
+body.hide {
+  pointer-events: none;
+}
+body.hide #wrap .cell:nth-of-type(1n) {
+  -webkit-clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+body.hide #wrap .cell:nth-of-type(2n) {
+  -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+body.hide #wrap .cell:nth-of-type(3n) {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+body #wrap {
+  width: 80vw;
+  height: 80vw;
+  display: grid;
+  grid-template-columns: 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25%;
+  grid-template-rows: 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25%;
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  opacity: 1;
+}
+body #wrap.hide {
+  opacity: 0;
+}
+body #wrap .cell {
+  box-sizing: border-box;
+  background: var(--bg);
+  transition: -webkit-clip-path 0.5s cubic-bezier(1, 0.25, 0.25, 1);
+  transition: clip-path 0.5s cubic-bezier(1, 0.25, 0.25, 1);
+  transition: clip-path 0.5s cubic-bezier(1, 0.25, 0.25, 1), -webkit-clip-path 0.5s cubic-bezier(1, 0.25, 0.25, 1);
+  will-change: clip-path;
+  -webkit-clip-path: polygon(-1% -1%, 101% -1%, 101% 101%, -1% 101%);
+  clip-path: polygon(-1% -1%, 101% -1%, 101% 101%, -1% 101%);
+}
+body #wrap .cell.one {
+  background: linear-gradient(45deg, var(--bg), var(--bg) calc(50% - 1px), var(--color1) calc(50% - 1px), var(--color1) calc(50% + 1px), var(--bg) calc(50% + 1px));
+}
+body #wrap .cell.two {
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.0001), rgba(255, 255, 255, 0.0001) calc(50% - 1px), var(--color1) calc(50% - 1px), var(--color1) calc(50% + 1px), rgba(255, 255, 255, 0.0001) calc(50% + 1px)), linear-gradient(-45deg, var(--bg), var(--bg) calc(50% - 1px), var(--color1) calc(50% - 1px), var(--color1) calc(50% + 1px), var(--bg) calc(50% + 1px));
+}
+body #wrap .cell.three {
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.0001), rgba(255, 255, 255, 0.0001) calc(50% - 2px), var(--color1) calc(50% - 2px), var(--color1) calc(50% + 0px), rgba(255, 255, 255, 0.0001) calc(50% + 0px)), repeating-linear-gradient(45deg, var(--bg), var(--bg) calc(12.5% - 2px), var(--color2) calc(12.5% - 2px), var(--color2) 12.5%, var(--bg) 12.5%), var(--bg);
+}
+body #wrap .cell.four {
+  background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.0001), rgba(255, 255, 255, 0.0001) calc(25% - 2px), var(--color2) calc(25% - 2px), var(--color2) calc(25% + 0px), rgba(255, 255, 255, 0.0001) calc(25% + 0px), rgba(255, 255, 255, 0.0001) calc(75% - 2px), var(--color2) calc(75% - 2px), var(--color2) 75%, rgba(255, 255, 255, 0.0001) 75%), repeating-linear-gradient(45deg, var(--bg), var(--bg) calc(25% - 2px), var(--color2) calc(25% - 2px), var(--color2) calc(25% + 0px), var(--bg) calc(25% + 0px), var(--bg) calc(75% - 2px), var(--color2) calc(75% - 2px), var(--color2) 75%, var(--bg) 75%), var(--bg);
+}
+body #wrap .cell.five, body #wrap .cell.eight {
+  background: var(--bg);
+}
+body #wrap .cell.eight {
+  box-shadow: none;
+}
+body #wrap .cell.six, body #wrap .cell.nine {
+  background: linear-gradient(45deg, var(--bg), var(--bg) calc(50% - 1px), var(--color1) calc(50% - 1px), var(--color1) calc(50% + 1px), var(--bg) calc(50% + 1px));
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell.seven {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.0001), rgba(255, 255, 255, 0.0001) calc(75% - 2px), var(--color1) calc(75% - 2px), var(--color1) calc(75% + 0px), rgba(255, 255, 255, 0.0001) calc(75% + 0px)), repeating-linear-gradient(90deg, var(--bg), var(--bg) calc(12.5% - 2px), var(--color2) calc(12.5% - 2px), var(--color2) 12.5%, var(--bg) 12.5%), var(--bg);
+}
+body #wrap .cell:nth-of-type(even) {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(6n) {
+  overflow: visible;
+  -webkit-clip-path: none;
+          clip-path: none;
+}
+body #wrap .cell:nth-of-type(1) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(1):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(1):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(1).six, body #wrap .cell:nth-of-type(1).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(1).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(2) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(2):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(2):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(2).six, body #wrap .cell:nth-of-type(2).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(2).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(3) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(3):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(3):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(3).six, body #wrap .cell:nth-of-type(3).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(3).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(4) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(4):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(4):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(4).six, body #wrap .cell:nth-of-type(4).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(4).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(5) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(5):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(5):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(5).six, body #wrap .cell:nth-of-type(5).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(5).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(6) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(6):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(6):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(6).six, body #wrap .cell:nth-of-type(6).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(6).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(7) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(7):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(7):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(7).six, body #wrap .cell:nth-of-type(7).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(7).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(8) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(8):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(8):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(8).six, body #wrap .cell:nth-of-type(8).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(8).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(9) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(9):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(9):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(9).six, body #wrap .cell:nth-of-type(9).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(9).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(10) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(10):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(10):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(10).six, body #wrap .cell:nth-of-type(10).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(10).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(11) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(11):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(11):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(11).six, body #wrap .cell:nth-of-type(11).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(11).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(12) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(12):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(12):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(12).six, body #wrap .cell:nth-of-type(12).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(12).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(13) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(13):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(13):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(13).six, body #wrap .cell:nth-of-type(13).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(13).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(14) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(14):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(14):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(14).six, body #wrap .cell:nth-of-type(14).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(14).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(15) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(15):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(15):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(15).six, body #wrap .cell:nth-of-type(15).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(15).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(16) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(16):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(16):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(16).six, body #wrap .cell:nth-of-type(16).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(16).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(17) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(17):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(17):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(17).six, body #wrap .cell:nth-of-type(17).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(17).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(18) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(18):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(18):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(18).six, body #wrap .cell:nth-of-type(18).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(18).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(19) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(19):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(19):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(19).six, body #wrap .cell:nth-of-type(19).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(19).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(20) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(20):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(20):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(20).six, body #wrap .cell:nth-of-type(20).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(20).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(21) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(21):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(21):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(21).six, body #wrap .cell:nth-of-type(21).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(21).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(22) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(22):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(22):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(22).six, body #wrap .cell:nth-of-type(22).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(22).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(23) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(23):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(23):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(23).six, body #wrap .cell:nth-of-type(23).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(23).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(24) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(24):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(24):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(24).six, body #wrap .cell:nth-of-type(24).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(24).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(25) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(25):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(25):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(25).six, body #wrap .cell:nth-of-type(25).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(25).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(26) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(26):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(26):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(26).six, body #wrap .cell:nth-of-type(26).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(26).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(27) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(27):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(27):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(27).six, body #wrap .cell:nth-of-type(27).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(27).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(28) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(28):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(28):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(28).six, body #wrap .cell:nth-of-type(28).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(28).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(29) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(29):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(29):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(29).six, body #wrap .cell:nth-of-type(29).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(29).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(30) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(30):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(30):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(30).six, body #wrap .cell:nth-of-type(30).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(30).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(31) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(31):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(31):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(31).six, body #wrap .cell:nth-of-type(31).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(31).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(32) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(32):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(32):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(32).six, body #wrap .cell:nth-of-type(32).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(32).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(33) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(33):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(33):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(33).six, body #wrap .cell:nth-of-type(33).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(33).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(34) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(34):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(34):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(34).six, body #wrap .cell:nth-of-type(34).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(34).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(35) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(35):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(35):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(35).six, body #wrap .cell:nth-of-type(35).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(35).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(36) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(36):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(36):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(36).six, body #wrap .cell:nth-of-type(36).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(36).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(37) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(37):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(37):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(37).six, body #wrap .cell:nth-of-type(37).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(37).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(38) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(38):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(38):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(38).six, body #wrap .cell:nth-of-type(38).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(38).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(39) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(39):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(39):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(39).six, body #wrap .cell:nth-of-type(39).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(39).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(40) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(40):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(40):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(40).six, body #wrap .cell:nth-of-type(40).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(40).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(41) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(41):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(41):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(41).six, body #wrap .cell:nth-of-type(41).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(41).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(42) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(42):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(42):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(42).six, body #wrap .cell:nth-of-type(42).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(42).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(43) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(43):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(43):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(43).six, body #wrap .cell:nth-of-type(43).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(43).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(44) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(44):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(44):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(44).six, body #wrap .cell:nth-of-type(44).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(44).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(45) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(45):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(45):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(45).six, body #wrap .cell:nth-of-type(45).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(45).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(46) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(46):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(46):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(46).six, body #wrap .cell:nth-of-type(46).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(46).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(47) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(47):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(47):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(47).six, body #wrap .cell:nth-of-type(47).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(47).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(48) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(48):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(48):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(48).six, body #wrap .cell:nth-of-type(48).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(48).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(49) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(49):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(49):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(49).six, body #wrap .cell:nth-of-type(49).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(49).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(50) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(50):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(50):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(50).six, body #wrap .cell:nth-of-type(50).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(50).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(51) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(51):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(51):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(51).six, body #wrap .cell:nth-of-type(51).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(51).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(52) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(52):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(52):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(52).six, body #wrap .cell:nth-of-type(52).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(52).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(53) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(53):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(53):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(53).six, body #wrap .cell:nth-of-type(53).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(53).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(54) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(54):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(54):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(54).six, body #wrap .cell:nth-of-type(54).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(54).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(55) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(55):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(55):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(55).six, body #wrap .cell:nth-of-type(55).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(55).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(56) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(56):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(56):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(56).six, body #wrap .cell:nth-of-type(56).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(56).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(57) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(57):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(57):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(57).six, body #wrap .cell:nth-of-type(57).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(57).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(58) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(58):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(58):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(58).six, body #wrap .cell:nth-of-type(58).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(58).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(59) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(59):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(59):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(59).six, body #wrap .cell:nth-of-type(59).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(59).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(60) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(60):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(60):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(60).six, body #wrap .cell:nth-of-type(60).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(60).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(61) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(61):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(61):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(61).six, body #wrap .cell:nth-of-type(61).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(61).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(62) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(62):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(62):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(62).six, body #wrap .cell:nth-of-type(62).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(62).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(63) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(63):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(63):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(63).six, body #wrap .cell:nth-of-type(63).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(63).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(64) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(64):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(64):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(64).six, body #wrap .cell:nth-of-type(64).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(64).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(65) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(65):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(65):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(65).six, body #wrap .cell:nth-of-type(65).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(65).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(66) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(66):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(66):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(66).six, body #wrap .cell:nth-of-type(66).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(66).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(67) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(67):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(67):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(67).six, body #wrap .cell:nth-of-type(67).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(67).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(68) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(68):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(68):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(68).six, body #wrap .cell:nth-of-type(68).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(68).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(69) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(69):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(69):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(69).six, body #wrap .cell:nth-of-type(69).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(69).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(70) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(70):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(70):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(70).six, body #wrap .cell:nth-of-type(70).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(70).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(71) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(71):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(71):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(71).six, body #wrap .cell:nth-of-type(71).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(71).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(72) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(72):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(72):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(72).six, body #wrap .cell:nth-of-type(72).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(72).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(73) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(73):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(73):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(73).six, body #wrap .cell:nth-of-type(73).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(73).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(74) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(74):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(74):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(74).six, body #wrap .cell:nth-of-type(74).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(74).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(75) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(75):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(75):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(75).six, body #wrap .cell:nth-of-type(75).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(75).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(76) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(76):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(76):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(76).six, body #wrap .cell:nth-of-type(76).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(76).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(77) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(77):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(77):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(77).six, body #wrap .cell:nth-of-type(77).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(77).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(78) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(78):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(78):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(78).six, body #wrap .cell:nth-of-type(78).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(78).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(79) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(79):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(79):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(79).six, body #wrap .cell:nth-of-type(79).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(79).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(80) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(80):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(80):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(80).six, body #wrap .cell:nth-of-type(80).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(80).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(81) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(81):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(81):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(81).six, body #wrap .cell:nth-of-type(81).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(81).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(82) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(82):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(82):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(82).six, body #wrap .cell:nth-of-type(82).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(82).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(83) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(83):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(83):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(83).six, body #wrap .cell:nth-of-type(83).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(83).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(84) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(84):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(84):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(84).six, body #wrap .cell:nth-of-type(84).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(84).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(85) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(85):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(85):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(85).six, body #wrap .cell:nth-of-type(85).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(85).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(86) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(86):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(86):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(86).six, body #wrap .cell:nth-of-type(86).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(86).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(87) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(87):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(87):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(87).six, body #wrap .cell:nth-of-type(87).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(87).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(88) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(88):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(88):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(88).six, body #wrap .cell:nth-of-type(88).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(88).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(89) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(89):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(89):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(89).six, body #wrap .cell:nth-of-type(89).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(89).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(90) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(90):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(90):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(90).six, body #wrap .cell:nth-of-type(90).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(90).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(91) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(91):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(91):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(91).six, body #wrap .cell:nth-of-type(91).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(91).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(92) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(92):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(92):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(92).six, body #wrap .cell:nth-of-type(92).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(92).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(93) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(93):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(93):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(93).six, body #wrap .cell:nth-of-type(93).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(93).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(94) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(94):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(94):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(94).six, body #wrap .cell:nth-of-type(94).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(94).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(95) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(95):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(95):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(95).six, body #wrap .cell:nth-of-type(95).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(95).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(96) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(96):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(96):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(96).six, body #wrap .cell:nth-of-type(96).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(96).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(97) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(97):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(97):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(97).six, body #wrap .cell:nth-of-type(97).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(97).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(98) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(98):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(98):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(98).six, body #wrap .cell:nth-of-type(98).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(98).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(99) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(99):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(99):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(99).six, body #wrap .cell:nth-of-type(99).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(99).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(100) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(100):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(100):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(100).six, body #wrap .cell:nth-of-type(100).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(100).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(101) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(101):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(101):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(101).six, body #wrap .cell:nth-of-type(101).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(101).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(102) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(102):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(102):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(102).six, body #wrap .cell:nth-of-type(102).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(102).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(103) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(103):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(103):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(103).six, body #wrap .cell:nth-of-type(103).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(103).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(104) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(104):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(104):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(104).six, body #wrap .cell:nth-of-type(104).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(104).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(105) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(105):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(105):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(105).six, body #wrap .cell:nth-of-type(105).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(105).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(106) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(106):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(106):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(106).six, body #wrap .cell:nth-of-type(106).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(106).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(107) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(107):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(107):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(107).six, body #wrap .cell:nth-of-type(107).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(107).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(108) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(108):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(108):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(108).six, body #wrap .cell:nth-of-type(108).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(108).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(109) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(109):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(109):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(109).six, body #wrap .cell:nth-of-type(109).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(109).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(110) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(110):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(110):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(110).six, body #wrap .cell:nth-of-type(110).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(110).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(111) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(111):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(111):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(111).six, body #wrap .cell:nth-of-type(111).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(111).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(112) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(112):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(112):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(112).six, body #wrap .cell:nth-of-type(112).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(112).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(113) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(113):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(113):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(113).six, body #wrap .cell:nth-of-type(113).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(113).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(114) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(114):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(114):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(114).six, body #wrap .cell:nth-of-type(114).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(114).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(115) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(115):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(115):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(115).six, body #wrap .cell:nth-of-type(115).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(115).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(116) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(116):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(116):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(116).six, body #wrap .cell:nth-of-type(116).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(116).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(117) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(117):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(117):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(117).six, body #wrap .cell:nth-of-type(117).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(117).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(118) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(118):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(118):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(118).six, body #wrap .cell:nth-of-type(118).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(118).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(119) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(119):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(119):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(119).six, body #wrap .cell:nth-of-type(119).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(119).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+body #wrap .cell:nth-of-type(120) {
+  grid-column-start: var(--position);
+  grid-row-start: var(--position2);
+  grid-row-end: span var(--size);
+  grid-column-end: span var(--size);
+  box-shadow: inset 2px 0 0 var(--color1), inset 0 0 0 2px var(--shadows);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+body #wrap .cell:nth-of-type(120):hover:before {
+  opacity: 1;
+}
+body #wrap .cell:nth-of-type(120):before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--color1);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+body #wrap .cell:nth-of-type(120).six, body #wrap .cell:nth-of-type(120).nine {
+  box-shadow: inset -2px 0 0 var(--color2), inset 0 2px 0 var(--color1);
+}
+body #wrap .cell:nth-of-type(120).nine {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}

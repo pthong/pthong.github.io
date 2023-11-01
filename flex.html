@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.intro {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+  </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="intro">
+            <h1>Welcome to Our Website</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+        <section class="features">
+            <div class="feature">
+                <h2>Feature 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="feature">
+                <h2>Feature 2</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="feature">
+                <h2>Feature 3</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Your Website</p>
+    </footer>
+</body>
+</html>

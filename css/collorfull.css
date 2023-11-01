@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+header {
+  background-color: #ff6a00; /* Orange background color */
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 20px 0;
+  color: #fff; /* White text color */
+}
+
+nav {
+  background-color: #ff00bf; /* Magenta background color */
+  padding: 10px 0;
+}
+
+#about, #projects, #contact {
+  background-color: #00a8ff; /* Blue background color */
+  padding: 40px;
+  text-align: center;
+}
+
+#about h2, #projects h2, #contact p {
+  color: #fff; /* White text color */
+}
+
+.project {
+  background-color: #ffde00; /* Yellow background color */
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add box shadow */
+  border-radius: 10px; /* Rounded corners */
+  transition: 0.3s;
+}
+
+.project:hover {
+  background-color: #ff9000; /* Darker yellow background color on hover */
+}
+
+.project h3 {
+  color: #333; /* Dark text color */
+}
+
+/* Theme toggle button style */
+#theme-toggle {
+  background-color: #33cc33; /* Green background color */
+  color: #fff; /* White text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#theme-toggle:hover {
+  background-color: #009900; /* Darker green background color on hover */
+}

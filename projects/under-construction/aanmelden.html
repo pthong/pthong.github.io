@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145706395-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'UA-145706395-1');
+      </script>
+      
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>F.L.K.L.F</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Wallpoet&display=swap"
+      rel="stylesheet"
+    />
+
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/8228cc98a8.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app">
+      <nav class="tinheader">
+        <div id="l">P. Thong</div>
+        <div id="m">
+            <i class="fas fa-camera" onClick="changeBackground(1)"></i>
+            
+            <i class="fas fa-camera" onClick="changeBackground(2)"></i>
+            
+            <i class="fas fa-camera" onClick="changeBackground(3)"></i>
+            
+            <i class="fas fa-camera" onClick="changeBackgroundc(4)"></i>
+            
+            <i class="fas fa-toilet" onClick="delmain()"></i>
+            <i class="fas fa-camera" onClick="getRandomColor()"></i>
+            <i>
+              
+              <a href="https://auth.uber.com/login/?uber_client_name=riderSignUp&source=auth&next_url=https%3A%2F%2Fm.uber.com%2F">
+                X
+              </a></i>
+         
+        </div>
+
+        <!-- #001: is de tijd, maar het werkt nog niet zo goed -->
+        <div id="r">asdf</div>
+        <script>
+          let time = new Date().toLocaleTimeString(navigator.language, {
+            hour: '2-digit',
+            minute:'2-digit'
+          });
+          document.querySelector("#r").innerHTML = 
+          `${new Date().getDate()}-${new Date().getMonth()+1}-${new Date().getFullYear()} &nbsp;&nbsp;    ${time}`
+        </script>
+        <!-- #001: is de tijd, maar het werkt nog niet zo goed -->
+                
+      </nav>
+      <main>
+        <div id="container">
+          <script>
+            let name = "oke"</script>
+            <h1>{name}</h1>
+          <h1>Aanmelden als eventhunter</h1>   
+          <form id="signin" action="???">
+            <ul>
+              <li>
+                <label for="firstname">Voornaam</label>
+                <input type="text" id="firstname">
+              </li>
+              <li>
+                  <label for="lastname">Achternaam</label>
+                  <input type="text" id="lastname">
+              </li>
+                <li>
+                    <label for="phonenumber">Voer je telefoon nummer in</label>
+                    <select>
+                        <option value="+31">+31 Nederland</option>
+                        <option value="+37">+37 Norwegen</option>
+                      </select>
+                    <input type="number" id="phonenumber">
+                </li>
+                <li>
+                    <label for="email">Voer je email adres in</label>
+                    <input type="text" id="email">
+                </li>
+                <li>
+                    <label for="password">Voer je email adres in</label>
+                    <input type="password" id="password">
+                </li>
+              </ul>
+            
+          </form>
+        </div>
+      </main>
+    <!-- <script src="main.js"></script> -->
+  </body>
+              <script>
+                  function changeBackground(i){
+                    document.getElementsByTagName("main")[0].style.background =`url("img/${i}.jpg")`;
+                    document.getElementsByTagName("main")[0].style.backgroundSize = "cover";;
+                  }
+
+                  function delmain(){
+                    document.getElementsByTagName("main")[0].innerHTML = "";
+                  }
+
+                  function getRandomColor(){
+                    document.getElementsByTagName("main")[0].style.background = `rgb(${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)})`;
+                  }
+                </script>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The 4 Elements</title>
+    <link rel="stylesheet" href="fourElements.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        /* display: flex; */
+        background: #f2f2f2;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        /* overflow: hidden; */
+        color: black;
+      }
+
+      body {
+        background: #f2f2f2;
+        color: black;
+      }
+
+      .day.now {
+        background: #c0c0c0;
+      }
+
+      body.dark {
+        background: black;
+        color: white;
+      }
+
+      h2.current-month {
+        background: #123456;
+        color: white;
+      }
+
+      .container.full.logo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        display: none;
+      }
+
+      .first.logo {
+        /* background: green; */
+        transform: scaleX(-1);
+        margin-right: 10px;
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+        background-color: #85ffbd;
+        background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+        border-top-left-radius: 3em;
+        border-bottom-right-radius: 4em;
+        font-size: 5em;
+        border: 5px solid black;
+        padding-left: 4px;
+      }
+      .logo::first-letter {
+        transform: rotate(30deg);
+        color: black;
+        /* background: black; */
+        font-size: 3pt;
+      }
+      .logo::first-line {
+        color: black;
+        /* background: black; */
+        /* font-size: 5pt; */
+      }
+
+      .first.leaf {
+        transform: scaleX(-1);
+      }
+      .title {
+        font-size: 28pt;
+      }
+
+      .calender.standard-theme {
+        position: relative;
+        /* top: 50px; */
+        /* left: 300px; */
+      }
+
+      .calender.standard-theme > .day {
+        /* padding: 10px; */
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        /* background: black; */
+        /* gap: 5px; */
+        font-size: 12pt;
+        /* width: 100%; */
+        /* background: black; */
+      }
+
+      .calender.awesome-theme {
+        display: grid;
+        grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
+        /* top: 50px; */
+        /* left: 300px; */
+      }
+      .calender.awesome-theme > .day > * {
+        display: none;
+      }
+
+      .hud {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .edit-day {
+        width: 90vw;
+        max-width: 800px;
+        background: green;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+      .edit-day h1 {
+        grid-row: 0/3;
+      }
+      .edit-day input {
+        /* width: 50%; */
+        /* max-width: 400px; */
+      }
+    </style>
+  </head>
+  <body class="dark">
+    <header>
+      <div class="container full logo">
+        <div class="first leaf"></div>
+        <span class="title">Leaf</span>
+      </div>
+    </header>
+
+    <h2 class="current-month"></h2>
+    <div class="hud">
+      <div class="edit-day">
+        <h2>Edit</h2>
+
+        <label for="fromDate">from</label>
+        <input type="date" name="" id="" />
+        <label for="fromDate">to</label>
+        <input type="date" name="" id="" />
+        <label for="fromDate">pushup</label>
+        <input type="number" name="" id="" />
+        <label for="fromDate">expenses</label>
+        <input type="text" name="" id="" />
+        <label for="fromDate">buyed</label>
+        <input type="text" name="buyed" id="" />
+        <label for="asdf">note</label>
+        <textarea name="note" rows="4" cols="50"> </textarea>
+      </div>
+    </div>
+    <!-- <div id="calender" class="calender awesome-theme"> -->
+    <div id="calender" class="calender standard-theme">
+      <!-- <div class="day">
+        <div class="date">Wed Jan 06 2021</div>
+        <div class="mood">3</div>
+        <div class="birtday">Thomas</div>
+        <div class="specials">Beetje programmeren met wouter</div>
+      </div>
+      <div class="day">
+        <div class="date">Wed Jan 06 2021</div>
+        <div class="mood">2</div>
+        <div class="birtday">Thomas</div>
+        <div class="specials">Beetje programmeren met wouter</div>
+      </div> -->
+    </div>
+
+    <script>
+      window.addEventListener("load", (event) => {
+        let currentDate = new Date(2021, 2, 21); //is er geen andere mogelijkheid :(
+        let journal = {};
+        journal.username = "Luke Kanzaki";
+        journal.dateFrom = new Date(2021, 0, 1);
+        journal.dateTo = new Date(2021, 5, 31);
+        journal.trackOptions = [
+          {
+            systemName: "pushUps",
+            shortName: "push ups",
+            description: "Aantal keren dat je opgedrukt heb",
+            type: "integer",
+            show: true,
+          },
+          {
+            systemName: "expenses",
+            shortName: "Expenses",
+            description: "Totaal dat je uitgegeven heeft",
+            type: "money",
+            show: true,
+          },
+          {
+            systemName: "buyed",
+            shortName: "Buyed",
+            description: "Beschrijf wat je heb gekocht",
+            type: "string",
+            show: true,
+          },
+          {
+            systemName: "note",
+            shortName: "Note",
+            description: "beschrijf wat je nog kwyt wil",
+            type: "string",
+            show: true,
+          },
+        ];
+        journal.log = [];
+        journal.log.push({
+          date: new Date(2021, 2, 19),
+          pushUps: 5,
+          expenses: 2.39,
+          buyed: "Broodje kaas",
+        });
+        journal.log.push({
+          date: new Date(2021, 2, 20),
+          pushUps: 10,
+          expenses: 56.98,
+          buyed: "grote boodschappen, broodje kaas",
+        });
+        journal.log.push({
+          date: new Date(2021, 2, 21),
+          pushUps: 10,
+          expenses: 56.98,
+          buyed: "Grote boodschappen gehaald.",
+        });
+        journal.log.push({
+          date: new Date(2021, 2, 22),
+          pushUps: 15,
+          expenses: 222,
+          buyed: "Karten, eten, Lung Fung",
+        });
+        journal.log.push({
+          date: new Date(2021, 2, 23),
+          pushUps: 15,
+          expenses: 234,
+          buyed: "drankje doen, Club Lustig",
+        });
+        journal.log.push({
+          date: new Date(2021, 2, 24),
+          pushUps: 15,
+          expenses: 150,
+          buyed: "etentje met Anamiek, Club Lustig",
+          note: "There are 45 habbits to track",
+        });
+        console.log(journal);
+
+        //
+
+        let daysOfYear = [];
+        for (
+          let d = journal.dateFrom;
+          d <= journal.dateTo;
+          d.setDate(d.getDate() + 1)
+        ) {
+          const pushDate = new Date(d);
+          daysOfYear.push(pushDate);
+        }
+
+        let newMonth = true;
+        let currentMonth = daysOfYear[0].getMonth();
+        for (let day of daysOfYear) {
+          const log = journal.log.find((item, index, array) => {
+            return isSameDate(day, item.date);
+          });
+
+          if (currentMonth != day.getMonth() || newMonth) {
+            switch (day.getMonth()) {
+              case 2:
+                document.querySelector(".current-month").innerHTML = `Maart`;
+                break;
+            }
+
+            currentMonth = day.getMonth();
+            newMonth = false;
+          }
+
+          // console.log(day)
+
+          if (log && isSameDate(new Date(), day)) {
+            calender.innerHTML += `
+            <div data-date-key="${log.date}" class="day now">
+              <div class="date">${log.date.toDateString()}</div>
+              <div class="mood"> pushUps:${
+                log.pushUps ? log.pushUps : "--"
+              }</div>
+              <div class="birtday"> expenses: ${
+                log.expenses ? log.expenses : "--"
+              }</div>
+              <div class="steps"> buyed: ${log.buyed ? log.buyed : "--"}</div>
+              <div class="specials">note: ${log.note ? log.note : "--"}</div>
+            </div>`;
+          } else if (log) {
+            calender.innerHTML += `
+            <div  data-date-key="${log.date}" class="day">
+              <div class="date">${log.date.toDateString()}</div>
+              <div class="mood"> pushUps:${
+                log.pushUps ? log.pushUps : "--"
+              }</div>
+              <div class="birtday"> expenses: ${
+                log.expenses ? log.expenses : "--"
+              }</div>
+              <div class="steps"> buyed: ${log.buyed ? log.buyed : "--"}</div>
+              <div class="specials">note: ${log.note ? log.note : "--"}</div>
+            </div>`;
+          } else if (isSameDate(new Date(), day)) {
+            calender.innerHTML += `
+            <div class="day now">
+              <div class="date">${day.toDateString()}</div>
+              <div class="mood">  </div>
+              <div class="birtday"> </div>
+              <div class="steps"> </div>
+              <div class="specials"> </div>
+            </div>`;
+          } else {
+            calender.innerHTML += `
+            <div class="day">
+              <div class="date">${day.toDateString()}</div>
+              <div class="mood">  </div>
+              <div class="birtday">  </div>
+              <div class="steps">  </div>
+              <div class="specials"> </div>
+            </div>`;
+          }
+        }
+        const newNow = document.querySelector(".now");
+        newNow.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.scrollIntoView();
+
+        document.addEventListener("keydown", (e) => {
+          console.log(e.key);
+          const now = document.querySelector(".now");
+          if (e.key == "i") {
+            now.classList.remove("now");
+            now.previousElementSibling.classList.add("now");
+            const newNow = document.querySelector(".now");
+            newNow.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.scrollIntoView();
+
+            changeEditDate();
+          }
+          if (e.key == "j") {
+            now.classList.remove("now");
+            now.nextElementSibling.classList.add("now");
+            // now.previousElementSibling.classList.add("now");
+            const newNow = document.querySelector(".now");
+            newNow.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.scrollIntoView();
+
+            changeEditDate();
+          }
+
+          // if (e.key == "x") {
+
+          if (e.key == "x") {
+            const newNow = document.querySelector(".now");
+            newNow.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.scrollIntoView();
+          }
+        });
+
+        changeEditDate = (now = document.querySelector(".now")) => {
+          const dateKey = new Date(now.getAttribute("data-date-key"));
+          const info = journal.log.find((item, index, array) => {
+            if (isSameDate(dateKey, item.date)) {
+              return { item, index, array };
+            }
+          });
+          // debugger;
+          if (info) {
+            document.getElementsByName("buyed")[0].value = info.buyed
+              ? info.buyed
+              : "--";
+            document.getElementsByName("note")[0].value = info.note
+              ? info.note
+              : "--";
+            // console.log({});
+          } else {
+            document.getElementsByName("buyed")[0].value = "";
+            document.getElementsByName("note")[0].value = "";
+          }
+        };
+        changeEditDate();
+
+        document
+          .querySelector(".current-month")
+          .addEventListener("click", (e) => {
+            document.body.classList.toggle("light");
+            document.body.classList.toggle("dark");
+          });
+
+        //
+      });
+
+      isSameDate = (d1, d2) => {
+        return (
+          d1.getDate() == d2.getDate() &&
+          d1.getMonth() == d2.getMonth() &&
+          d1.getFullYear() == d2.getFullYear()
+        );
+      };
+
+      // function getWeekNumber(d) {
+      //   // Copy date so don't modify original
+      //   d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+      //   // Set to nearest Thursday: current date + 4 - current day number
+      //   // Make Sunday's day number 7
+      //   d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+      //   // Get first day of year
+      //   var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+      //   // Calculate full weeks to nearest Thursday
+      //   var weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+      //   // Return array of year and week number
+      //   return [d.getUTCFullYear(), weekNo];
+      // }
+
+      // requestAnimationFrame(function x() {
+      //   // alert(eyes);
+
+      //   window.requestAnimationFrame(x);
+      // });
+    </script>
+
+    <!-- firebase shizzle -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyCFIfRhf3OxCV9z_clC_I_n0nFan3C7kOc",
+        authDomain: "journal-2c20a.firebaseapp.com",
+        projectId: "journal-2c20a",
+        storageBucket: "journal-2c20a.appspot.com",
+        messagingSenderId: "906972562322",
+        appId: "1:906972562322:web:21ae95f961a123f2ecf74b",
+        measurementId: "G-53QZH1F1TB",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+  </body>
+</html>

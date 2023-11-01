@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css?family=Wallpoet&display=swap");
+
+:root {
+  --main-color: black;
+  --normal-padding: 1vw;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+  overflow: hidden;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 10vw 70vw 20vw;
+  width: 100%;
+  height: 1rem;
+  background: black;
+  color: white;
+  font-size: 1rem;
+  text-align: left;
+  font-family: "Wallpoet", cursive;
+}
+/* nav > div:nth-child(1) {
+  background: black;
+} */
+/* 
+nav > div:nth-child(2) {
+  text-align: center;
+} */
+nav > div:nth-child(3) {
+  text-align: right;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.fa-toilet:hover {
+  color: green;
+}
+
+main {
+  position: absolute;
+  font-family: "Wallpoet", cursive;
+  top: 1rem;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 1rem);
+  /* background-color: green; */
+  background: url("img/6.jpg");
+  background-size: cover;
+  z-index: -1;
+}
+
+h2 {
+  font-size: 30pt;
+  padding: var(--normal-padding);
+  margin-top: 13vh;
+  color: white;
+  background: rgba(50, 200, 50, 0.45);
+}
+
+h1 {
+  font-size: 40pt;
+  /* padding: var(--normal-padding); */
+  margin-top: 15vh;
+  color: white;
+  /* background: rgba(50, 200, 50, 0.45); */
+}
+
+button {
+  font-size: 40pt;
+  font-family: "Wallpoet", cursive;
+  padding: var(--normal-padding);
+  margin: var(--normal-padding);
+}

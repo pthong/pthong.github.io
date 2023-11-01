@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The 4 Elements</title>
+    <link rel="stylesheet" href="fourElements.css" />
+    <style>
+      body {
+        /* display: flex; */
+        /* overflow: hidden; */
+      }
+
+      .container.full.logo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        display: none;
+      }
+
+      .first.logo {
+        /* background: green; */
+        transform: scaleX(-1);
+        margin-right: 10px;
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+        background-color: #85ffbd;
+        background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+        border-top-left-radius: 3em;
+        border-bottom-right-radius: 4em;
+        font-size: 5em;
+        border: 5px solid black;
+        padding-left: 4px;
+      }
+      .logo::first-letter {
+        transform: rotate(30deg);
+        color: black;
+        /* background: black; */
+        font-size: 3pt;
+      }
+      .logo::first-line {
+        color: black;
+        /* background: black; */
+        /* font-size: 5pt; */
+      }
+
+      .first.leaf {
+        transform: scaleX(-1);
+      }
+      .title {
+        font-size: 28pt;
+      }
+
+      .calender.standard-theme {
+        position: relative;
+        /* top: 50px; */
+        /* left: 300px; */
+      }
+
+      .calender.standard-theme > .day {
+        /* padding: 10px; */
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        /* background: black; */
+        /* gap: 5px; */
+        background: #123456;
+        color: #3e648a;
+        font-size: 12pt;
+        /* width: 100%; */
+        /* background: black; */
+      }
+
+      .calender.awesome-theme {
+        position: relative;
+        display: grid;
+        grid-template-columns: 50px 50px 50px 50px 50px 50px 50px;
+        /* top: 50px; */
+        /* left: 300px; */
+      }
+
+      .calender.awesome-theme > .day > * {
+        display: none;
+      }
+
+      .calender.awesome-theme > .day > .date {
+        display: block;
+        color: black;
+        width: 50px;
+        height: 50px;
+        background: black;
+        border-radius: 50%;
+        /* line-height: 0; */
+      }
+
+      .calender.awesome-theme > .day {
+        /* padding:10px; */
+        display: grid;
+        grid-template-columns: 120px 30px 100px 600px;
+        /* background: black; */
+        background: #123456;
+        color: #3e648a;
+
+        /* width: 100%; */
+        /* background: black; */
+      }
+
+      .day.now {
+        /* font-size: 14pt; */
+        display: flex !important;
+        flex-direction: column;
+        background: #f2f2f2 !important;
+        color: black !important;
+        position: fixed;
+        top: 140px;
+        left: 250px;
+        width: 50%;
+        font-size: 12pt !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container full logo">
+        <div class="first leaf"></div>
+        <span class="title">Leaf</span>
+      </div>
+    </header>
+
+    <style>
+      h2.current-month {
+        position: sticky;
+        top: 10px;
+        left: 10px;
+        background: black;
+        color: white;
+        z-index: 2;
+      }
+    </style>
+    <h2 class="current-month"></h2>
+
+    <!-- <div id="calender" class="calender awesome-theme"> -->
+    <div id="calender" class="calender standard-theme">
+      <!-- <div class="day">
+        <div class="date">Wed Jan 06 2021</div>
+        <div class="mood">3</div>
+        <div class="birtday">Thomas</div>
+        <div class="specials">Beetje programmeren met wouter</div>
+      </div>
+      <div class="day">
+        <div class="date">Wed Jan 06 2021</div>
+        <div class="mood">2</div>
+        <div class="birtday">Thomas</div>
+        <div class="specials">Beetje programmeren met wouter</div>
+      </div> -->
+    </div>
+
+    <script>
+      window.addEventListener("load", (event) => {
+        var daysOfYear = [];
+        for (
+          let d = new Date(2021, 0, 1);
+          d <= new Date(2021, 11, 31);
+          d.setDate(d.getDate() + 1)
+        ) {
+          const pushDate = new Date(d);
+          daysOfYear.push(pushDate);
+        }
+
+        let newMonth = true;
+        let currentMonth = daysOfYear[0].getMonth();
+        for (let day of daysOfYear) {
+          if (currentMonth != day.getMonth() || newMonth) {
+            switch (day.getMonth()) {
+              case 2:
+                document.querySelector(".current-month").innerHTML = `Maart`;
+                break;
+            }
+
+            currentMonth = day.getMonth();
+            newMonth = false;
+          }
+
+          // console.log(day)
+          if (isSameDate(new Date(), day)) {
+            calender.innerHTML += `
+            <div class="day now">
+              <div class="date">${day.toDateString()}</div>
+              <div class="mood">Mood: 5 </div>
+              <div class="birtday"> Pushups: 30s</div>
+              <div class="steps"> stappen: 10123</div>
+              <div class="specials">Uitgave: 2 euro</div>
+            </div>`;
+          } else {
+            calender.innerHTML += `
+            <div class="day">
+              <div class="date">${day.toDateString()}</div>
+              <div class="mood">Mood: . </div>
+              <div class="birtday"> Pushups: 310s</div>
+              <div class="steps"> stappen: 80000</div>
+              <div class="specials">Uitgave: 18 euro</div>
+            </div>`;
+          }
+        }
+        const newNow = document.querySelector(".now");
+        newNow.previousElementSibling.previousElementSibling.scrollIntoView();
+
+        document.addEventListener("keydown", (e) => {
+          console.log(e.key);
+          const now = document.querySelector(".now");
+          if (e.key == "i") {
+            now.classList.remove("now");
+            now.previousElementSibling.classList.add("now");
+            const newNow = document.querySelector(".now");
+            newNow.previousElementSibling.previousElementSibling.scrollIntoView();
+          }
+          if (e.key == "j") {
+            now.classList.remove("now");
+            now.nextElementSibling.classList.add("now");
+            // now.previousElementSibling.classList.add("now");
+            const newNow = document.querySelector(".now");
+            newNow.previousElementSibling.previousElementSibling.scrollIntoView();
+          }
+
+          // if (e.key == "x") {
+
+          if (e.key == "x") {
+            const newNow = document.querySelector(".now");
+            newNow.previousElementSibling.previousElementSibling.scrollIntoView();
+          }
+        });
+        //
+      });
+      isSameDate = (d1, d2) => {
+        return (
+          d1.getDate() == d2.getDate() &&
+          d1.getMonth() == d2.getMonth() &&
+          d1.getFullYear() == d2.getFullYear()
+        );
+      };
+
+      // function getWeekNumber(d) {
+      //   // Copy date so don't modify original
+      //   d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+      //   // Set to nearest Thursday: current date + 4 - current day number
+      //   // Make Sunday's day number 7
+      //   d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+      //   // Get first day of year
+      //   var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+      //   // Calculate full weeks to nearest Thursday
+      //   var weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+      //   // Return array of year and week number
+      //   return [d.getUTCFullYear(), weekNo];
+      // }
+
+      // requestAnimationFrame(function x() {
+      //   // alert(eyes);
+
+      //   window.requestAnimationFrame(x);
+      // });
+    </script>
+  </body>
+</html>

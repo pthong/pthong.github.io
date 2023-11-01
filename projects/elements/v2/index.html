@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css"
+    />
+    <title>game elements</title>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        console.log(`the page is loaded`);
+
+        const firesound = new Audio("sound/fire.mp3");
+        const beatsound = new Audio("sound/Cymbal_Groove.mp3");
+
+        firesound.volume = 0.05;
+
+        const handler = (e, elem) => {
+          elem.classList.toggle("btnRelease");
+          elem.classList.toggle("buttonPress");
+
+          if (e.type == "mouseup" || e.type == "keyup") {
+            switch (elem.id) {
+              case "k":
+                const player = document.querySelector(".fire-player");
+                player.style.display = "none";
+                stopSound(firesound);
+                break;
+              case "j":
+              case "u":
+              case "i":
+                stopSound(beatsound);
+                break;
+            }
+          } else if (e.type === "mousedown" || e.type === "keydown") {
+            //todo code above in a switch to
+            switch (elem.id) {
+              case "k":
+                const playe = document.querySelector(".fire-player");
+                if (playe.style.display == "none") {
+                  playe.style.top = `${
+                    Math.floor(Math.random() * 199) + 100
+                  }px`;
+                  playe.style.left = `${
+                    Math.floor(Math.random() * 199) + 100
+                  }px`;
+                }
+                playe.style.display = "block";
+                playSound(firesound);
+                break;
+              case "u":
+              case "i":
+              case "j":
+                playSound(beatsound);
+                break;
+              case "a":
+                const player = document.querySelector(".fire-player");
+                const leftpos = player.style.left.substring(
+                  0,
+                  player.style.left.length - 2
+                );
+                player.style.left = `${leftpos - 5}px`;
+                break;
+              case "s":
+                const playerrrr = document.querySelector(".fire-player");
+                const toppos = playerrrr.style.top.substring(
+                  0,
+                  playerrrr.style.top.length - 2
+                );
+                playerrrr.style.top = `${parseInt(toppos) + 5}px`;
+                break;
+              case "d":
+                const playerr = document.querySelector(".fire-player");
+                const leftposs = playerr.style.left.substring(
+                  0,
+                  playerr.style.left.length - 2
+                );
+                playerr.style.left = `${parseInt(leftposs) + 5}px`;
+                break;
+              case "w":
+                const playerrr = document.querySelector(".fire-player");
+                const topposs = playerrr.style.top.substring(
+                  0,
+                  playerrr.style.top.length - 2
+                );
+                playerrr.style.top = `${topposs - 5}px`;
+                break;
+              case "btn_theme1":
+                setTheme(1);
+                break;
+            }
+          }
+        };
+
+        const mouseHandler = (e) => {
+          handler(e, e.currentTarget);
+        };
+
+        const keyHandler = (e) => {
+          const isActive =
+            document.querySelector("#action") !== document.activeElement;
+          if (isActive) {
+            const key = e.key;
+            const elem = document.querySelector(`#${key.toLowerCase()}`);
+            if (elem) {
+              handler(e, elem);
+            }
+          }
+        };
+
+        for (let keyElem of document.querySelectorAll(
+          "#u, #i, #j, #k, #a, #s, #d, #d, #w, #btn_theme1, #btn_theme2, #btn_theme3, #btn_theme4"
+        )) {
+          console.log(keyElem);
+          keyElem.addEventListener("mousedown", mouseHandler);
+          keyElem.addEventListener("mouseup", mouseHandler);
+        }
+
+        document.body.addEventListener("keyup", keyHandler);
+        document.body.addEventListener("keydown", keyHandler);
+
+        //Possible code for collision detection..
+        if (!!window.IntersectionObserver) {
+          let video = document.querySelector(".fire-player");
+          let observer = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                console.log({ entry });
+                if (entry.intersectionRatio != 1) {
+                  document.querySelector(".fire-player").style.display = "none";
+                  stopSound(firesound);
+                } else {
+                  document.querySelector(".fire-player").style.display =
+                    "block";
+                  playSound(firesound);
+                }
+              });
+            },
+            { threshold: 1 }
+          );
+          observer.observe(video);
+        }
+
+        let playerAnimationID = requestAnimationFrame(
+          (animatePlayer = (time) => {
+            const firePlayer = document.querySelector(".fire-player");
+            firePlayer.style.background = `var(--fire-player-img) ${
+              (Math.floor(time / 100) * 100) % 1000
+            }px 0px`;
+
+            // if (Math.floor(time / 100) * 100) % 1000 == 100){
+            window.requestAnimationFrame(animatePlayer);
+            // }
+          })
+        );
+
+        console.log(document.querySelector("#action"));
+        document.querySelector("#action").addEventListener("keydown", (e) => {
+          // [document.querySelector("#action").value]();
+          try {
+            eval(document.querySelector("#action").value);
+          } catch (e) {}
+        });
+
+        //
+      });
+
+      const playSound = (sound, element = null) => {
+        sound.loop = true;
+        sound.play();
+      };
+      const stopSound = (sound, element = null) => {
+        sound.pause();
+        sound.currentTime = 0;
+      };
+
+      function setTheme(t) {
+        for (let elem of document.querySelectorAll("*")) {
+          elem.classList.add(`theme${t}`);
+        }
+      }
+    </script>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        border-style: border-box;
+      }
+      :root {
+        --main-background: black;
+        --main-text-color: antiquewhite;
+        --ligth-opacity: rgba(0, 0, 0, 0.12);
+        --round-border-radius: 50%;
+        --large-btn-size: 100px;
+        --air-img: url("img/1/air.png");
+        --earth-img: url("img/1/earth.png");
+        --water-img: url("img/1/water.png");
+        --fire-img: url("img/1/fire.png");
+        /* --fire-img: url("img/2/fire.png"); */
+        --fire-player-img: url("img/firespritesheet.png");
+      }
+      body {
+        background: var(--main-background);
+        color: var(--main-text-color);
+      }
+
+      h1::after {
+        --title: "Soundboard of elements";
+        content: var(--title);
+      }
+      h2::after {
+        --title: "Press the buttons";
+        content: var(--title);
+      }
+
+      .bottom-right-interface {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        right: 50px;
+        bottom: 50px;
+        display: grid;
+        grid-template-columns: 100px 100px;
+        grid-template-rows: 100px 100px;
+        gap: 10px;
+      }
+
+      .bottom-right-interface > img {
+        background: var(--ligth-opacity);
+        background-color: white;
+        box-shadow: 30px green;
+        border-radius: var(--round-border-radius);
+        border-radius: 10px;
+        width: var(--large-btn-size);
+        height: var(--large-btn-size);
+      }
+
+      .bottom-right-interface > img:nth-child(1) {
+        content: var(--air-img);
+      }
+      .bottom-right-interface > img:nth-child(2) {
+        content: var(--earth-img);
+      }
+      .bottom-right-interface > img:nth-child(3) {
+        content: var(--water-img);
+        margin-left: 25px;
+      }
+      .bottom-right-interface > img:nth-child(4) {
+        content: var(--fire-img);
+        margin-left: 25px;
+      }
+
+      .up-right-interface {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 5px;
+      }
+      .up-right-interface > i {
+        margin: 10px;
+      }
+
+      .bottom-left-interface {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 200px;
+        height: 200px;
+        background: rgba(195, 153, 153, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 40px;
+        border-radius: 40%;
+      }
+
+      .fire-player {
+        background: var(--fire-player-img) 000px 0px;
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        width: 100px;
+        height: 100px;
+        display: none;
+        /* background: url(img_navsprites.gif) 0 0; */
+      }
+    </style>
+
+    <style>
+      .btnPress {
+        -webkit-animation-name: btnPress;
+        -webkit-animation-duration: 100ms;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: ease;
+        -webkit-animation-fill-mode: forwards;
+      }
+      @-webkit-keyframes btnPress {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(0.98);
+        }
+      }
+
+      .btnRelease {
+        -webkit-animation-name: btnRelease;
+        -webkit-animation-duration: 100ms;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: ease;
+        -webkit-animation-fill-mode: forwards;
+      }
+      @-webkit-keyframes btnRelease {
+        from {
+          transform: scale(0.98);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="full-hud">
+      <header>
+        <h1></h1>
+        <h2></h2>
+        <input type="text" name="action" id="action" />
+        <!-- uijk -->
+      </header>
+      <div>
+        <button id="a">A</button>
+        <button id="s">S</button>
+        <button id="d">D</button>
+        <button id="w">W</button>
+      </div>
+
+      <div class="up-right-interface">
+        <i id="btn_theme1" class="bi-gem"></i>
+        <i id="btn_theme2" class="bi-gem"></i>
+        <i id="btn_theme3" class="bi-gem"></i>
+        <i id="btn_theme4" class="bi-gem"></i>
+      </div>
+      <div class="bottom-right-interface">
+        <img id="u" class="element" />
+        <img id="i" class="element" />
+        <img id="j" class="element" />
+        <img id="k" class="element" />
+      </div>
+      <div class="bottom-left-interface">
+        <i id="joy" class="bi-gem"></i>
+      </div>
+    </div>
+    <div class="full-main">
+      <div class="fire-player"></div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

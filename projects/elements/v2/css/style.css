@@ -1,0 +1,15 @@
+h1.theme1,
+h2.theme1,
+i.theme1 {
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+h1.theme2,
+h2.theme2,
+i.theme2 {
+  color: blue;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
