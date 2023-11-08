@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pascal Thong - Portfolio</title>
+    <link rel="stylesheet" id="theme-stylesheet" href="css/light.css">
+    <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+    <!-- <link rel="stylesheet" href="css/light.css"> -->
+</head>
+<body>
+
+  <!-- (header>h1+p+button#theme-toggle)+nav+(section#about>h2+p)+(section#projects>h2+div.projects>a>(div.project>h3+p)*8)+section#contact>p -->
+<!-- 
+  <header>
+    <h1></h1>
+    <p></p>
+    <button id="theme-toggle"></button>
+  </header>
+  <nav></nav>
+  <section id="about">
+    <h2></h2>
+    <p></p>
+  </section>
+  <section id="projects">
+    <h2></h2>
+    <div class="projects">
+      <a href="">
+        <div class="project">
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="project">
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="project">
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="project">
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="project">
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="project">
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="project">
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="project">
+          <h3></h3>
+          <p></p>
+        </div>
+      </a>
+    </div>
+  </section>
+  <section id="contact">
+    <p></p>
+  </section> -->
+    <header>
+      <div class="header-container">
+        <div class="header-section hs1">
+          <h1>Pascal Thong</h1>
+          <p>Agile Software Developer</p>
+          <button id="theme-toggle">Toggle Theme</button>
+        </div>
+        <div class="header-section hs2">a</div>
+        <div class="header-section hs3">a</div>
+        <div class="header-section hs4">a</div>
+        <div class="header-section hs5">a</div>
+        <div class="header-section hs6">a</div>
+        <div class="header-section hs7">a</div>
+        <div class="header-section hs8">a</div>
+        <div class="header-section hs9">a</div>
+        <div class="header-section hs10">a</div>
+        <div class="header-section hs11">a</div>
+        <div class="header-section hs12">a</div>
+
+      </div>
+    
+    </header>
+    <style>
+  
+    </style>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+          Halo! Nama saya Pascal Thong, dan saya adalah individu yang sangat termotivasi dan berdedikasi dengan gairah untuk belajar dan pertumbuhan pribadi. Saya memiliki latar belakang yang kuat dalam pendidikan dan pengalaman profesional, dan selalu mencari tantangan dan peluang baru untuk meningkatkan diri sendiri dan orang di sekitar saya.
+          <br><br>
+          Saya menyelesaikan gelar Sarjana dalam Ilmu Komputer dari Universitas The Hague, dan telah bekerja di industri teknologi selama beberapa bulan terakhir. Saya memiliki keterampilan dalam berbagai bahasa pemrograman dan pengalaman yang luas dalam pengembangan perangkat lunak dan manajemen proyek.
+          <br><br>
+          Di waktu luang saya, saya menikmati hiking, berpergian, dan membaca. Saya juga seorang relawan berdedikasi dan telah terlibat dalam beberapa proyek pelayanan masyarakat selama bertahun-tahun.
+          <br><br>
+          Saya tertarik terutama dalam peluang pekerjaan lepas karena ini akan memungkinkan saya untuk mendapatkan pengalaman dan keterampilan berharga.
+          <br><br>
+          Secara keseluruhan, saya adalah individu yang berpengetahuan luas dan berprestasi yang berkomitmen untuk mencapai tujuan saya dan memberikan dampak positif di dunia.
+        </p>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+          <!-- <a href="#">
+            <div class="project">
+              <h3>Project 1</h3>
+              <p>Description of your first project goes here.</p>
+            </div>
+          </a> -->
+        </div>
+          <script type="module">
+            const Projects = document.querySelector("div.projects");
+            const projects = [
+    {
+        id: 1,
+        projectName: "Elements",
+        description: "Aplikasi berbasis web yang menjelajahi unsur-unsur fundamental dari tabel periodik.",
+        link: "projects/elements/v2/index.html"
+    },
+    {
+        id: 2,
+        projectName: "Sound of Elements",
+        description: "Pengalaman audiovisual interaktif yang menggabungkan kimia dengan musik.",
+        link: "projects/elements/index.html"
+    },
+    {
+        id: 3,
+        projectName: "Tracker",
+        description: "Alat manajemen proyek yang membantu tim tetap terorganisir dan berada di jalur yang benar.",
+        link: "projects/tracker/spa%20copy%202.html"
+    },
+    {
+        id: 4,
+        projectName: "Sedang Dalam Konstruksi",
+        description: "Situs web dalam tahap pengembangan, tetap pantau untuk pembaruan!",
+        link: "projects/tracker/spa%20copy%202.html"
+    },
+    {
+        id: 5,
+        projectName: "uutf",
+        description: "Sebuah perpustakaan pengkodean dan dekoding teks untuk menangani berbagai encoding karakter yang berbeda.",
+        link: "projects/uutf/index.html"
+    }
+];
+            for(let project of projects){
+              Projects.innerHTML += `
+              <a href="${project.link}">
+              <div class="project">
+                <h3>${project.projectName}</h3>
+                <p>${project.description}</p>
+              </div>
+              </a>
+              `
+            }
+            console.log(Projects);
+
+          </script>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>
+          Anda dapat menemukan saya di Twitter dan Instagram dengan mengikuti akun-akun berikut:
+          <br><br>
+          Twitter: Pascal Thong
+          Instagram: Pascal Thong
+          Terima kasih atas kunjungannya
+        </p>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeStylesheet = document.getElementById("theme-stylesheet");
+    let currentTheme = "light"; // Default theme
+
+    // Function to toggle the theme
+    function toggleTheme() {
+        if (currentTheme === "light") {
+            currentTheme = "dark";
+        } else {
+            currentTheme = "light";
+        }
+
+        themeStylesheet.href = `css/${currentTheme}.css`;
+        document.body.className = currentTheme + "-theme";
+    }
+
+    // Add click event listener to the theme toggle button
+    themeToggle.addEventListener("click", toggleTheme);
+});
+    </script>
+</body>
+</html>

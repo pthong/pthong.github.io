@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> UUTF 28 - uhh hahahahaha</title>
+  <link rel="stylesheet" href="css/style.css">  
+</head>
+
+<body>
+  <div class="container">
+  <div class="balloon white">
+    <div class="star-red"></div>
+  <div class="face">
+    <div class="eye"></div>
+    <div class="mouth happy"></div>
+  </div>
+  <div class="triangle"></div>
+  <div class="string"></div>
+</div>
+<div class="balloon red">
+  <div class="star"></div>
+  <div class="face">
+    <div class="eye"></div>
+    <div class="mouth happy"></div>
+  </div>
+  <div class="triangle"></div>
+  <div class="string"></div>
+</div>
+<div class="balloon blue">
+  <div class="star"></div>
+  <div class="face">
+    <div class="eye"></div>
+    <div class="mouth happy"></div>
+  </div>
+  <div class="triangle"></div>
+  <div class="string"></div>
+</div>
+    <div id="timer">
+        <div class="days">
+        <div class="numbers">U</div>♦</div>             
+        <div class="hours">             
+        <div class="numbers">U</div>♣</div>             
+        <div class="minutes">             
+        <div class="numbers">T</div>♠</div>             
+        <div class="seconds">             
+        <div class="numbers">F</div>♥</div>             </div>
+
+  <h1>UUTF</h1>
+</div>
+<footer>
+    <p>Inspired by <a href="https://codepen.io/juliepark"> julie</a> ♡ </p>
+    <p>Finished by <a href="https://www.uutf.nl/"> UUTF</a> 🎅 </p>
+    
+</footer>
+<script  src="js/tone.js"></script>
+<script  src="js/date.js"></script>
+<script  src="js/index.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+      console.log("Will service worker register?");
+      navigator.serviceWorker.register('service-worker.js').then(function(reg){
+        console.log("Yes it did.");
+      }).catch(function(err) {
+        console.log("No it didn't. This happened: ", err)
+      });
+    }
+  </script>
+</body>
+</html>

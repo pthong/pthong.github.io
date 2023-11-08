@@ -1,0 +1,100 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a { 
+  text-decoration: none;
+  color: #fff}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+header {
+  text-align: center;
+  background-color: #333;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: #222;
+  padding: 10px 0;
+}
+
+nav li {
+  margin: 0 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #66ff66;
+}
+
+section > *{
+  padding: 40px;
+  max-width:800px;
+  margin:0 auto;
+  text-align: justify;
+  /* border:3px solid red; */
+}
+
+.project {
+  background-color: #444;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  transition: .3s;
+}
+
+
+.project:hover  {
+  background-color: #555; 
+}
+
+
+.project h3 {
+  color: #66ff66;
+}
+
+#theme-toggle {
+  background-color: #333; /* Dark gray background color */
+  color: #fff; /* White text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#theme-toggle:hover {
+  background-color: #444; /* Slightly darker gray background color on hover */
+}
+
+/* Media Query for responsive design */
+@media (max-width: 600px) {
+  nav ul {
+      flex-direction: column;
+      text-align: center;
+  }
+  nav li {
+      margin: 10px 0;
+  }
+}

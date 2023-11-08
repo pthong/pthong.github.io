@@ -1,0 +1,122 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a { 
+  text-decoration: none;
+  color: #000; /* Change link color to black */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Light gray background */
+  color: #333; /* Dark text color */
+}
+
+header {
+  text-align: center;
+  background-color: #eee; /* Light gray header background */
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: #ddd; /* Light gray navigation background */
+  padding: 10px 0;
+}
+
+nav li {
+  margin: 0 20px;
+}
+
+header > .header-container{
+  display:grid;
+  grid-template-columns: auto repeat(3, 128px) auto;
+  grid-template-rows: auto repeat(3, 128px) auto;
+  gap:10px;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.header-section {
+  background-color: #fff;
+  border-radius: 5px ;
+}
+
+.hs1{
+  grid-area:1/1/1/6;
+}
+.hs2{
+  grid-area: 2/1/5/2;
+}
+.hs3{
+  grid-area: 2/5/5/6;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333; /* Dark text color */
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #123;
+}
+
+section > * {
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+  /* border: 3px solid red; */
+}
+
+.project {
+  background-color: #eee; /* Light gray project background */
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  transition: .3s;
+}
+
+.project:hover  {
+  background-color: #f5f5f5; /* Slightly lighter background on hover */
+}
+
+.project h3 {
+  color: #123;
+}
+
+#theme-toggle {
+  background-color: #123456; /* Blue background color */
+  color: #fff; /* White text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#theme-toggle:hover {
+  background-color: #123456; /* Slightly darker blue background color on hover */
+}
+/* Media Query for responsive design */
+@media (max-width: 600px) {
+  nav ul {
+      flex-direction: column;
+      text-align: center;
+  }
+  nav li {
+      margin: 10px 0;
+  }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145706395-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'UA-145706395-1');
+      </script>
+      
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>F.L.K.L.F</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Wallpoet&display=swap"
+      rel="stylesheet"
+    />
+
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/8228cc98a8.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app">
+      <nav class="tinheader">
+        <div id="l">P. Thong</div>
+        <div id="m">
+            <i class="fas fa-camera" onClick="changeBackground(1)"></i>
+            
+            <i class="fas fa-camera" onClick="changeBackground(2)"></i>
+            
+            <i class="fas fa-camera" onClick="changeBackground(3)"></i>
+            
+            <i class="fas fa-camera" onClick="changeBackgroundc(4)"></i>
+            
+            <i class="fas fa-toilet" onClick="delmain()"></i>
+            <i class="fas fa-camera" onClick="getRandomColor()"></i>
+         
+        </div>
+        <div id="r"></div>
+
+        <script>
+          let time = new Date().toLocaleTimeString(navigator.language, {
+            hour: '2-digit',
+            minute:'2-digit'
+          });
+          document.querySelector("#r").innerHTML = 
+          `${new Date().getDate()}-${new Date().getMonth()+1}-${new Date().getFullYear()} &nbsp;&nbsp;    ${time}`</script>
+        </nav>
+      <main>
+        <h2>I will be released on 20 Februari 2020 on 20:20</h2>
+        <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20-02-2020 20:20</h1>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <button onclick="c.creategroup()">Under Construction</button>
+      <!-- </div>
+        <h1>F.L.K.L.F</h1>
+        <button onclick="c.creategroup()">Enter</button> -->
+      </main>
+
+    <!-- <script src="main.js"></script> -->
+  </body>
+              <script>
+                  function changeBackground(i){
+                    document.getElementsByTagName("main")[0].style.background =`url("img/${i}.jpg")`;
+                    document.getElementsByTagName("main")[0].style.backgroundSize = "cover";;
+                  }
+
+                  function delmain(){
+                    document.getElementsByTagName("main")[0].innerHTML = "";
+                  }
+
+                  function getRandomColor(){
+                    document.getElementsByTagName("main")[0].style.background = `rgb(${Math.round(Math.random()*255)},${Math.round(Math.random()*255)},${Math.round(Math.random()*255)})`;
+                  }
+                </script>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sound elements</title>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        console.log(`the page is loaded`);
+
+        // pageTitle.innerText = `The World Greatest`;
+
+        // const elements = document.querySelectorAll(".elements");
+        //
+        const firesound = new Audio("sound/fire.mp3");
+        const beatsound = new Audio("sound/Cymbal_Groove.mp3");
+        for (let btn1 of document.querySelectorAll("h1, h2, img")) {
+          //   const btn1 = document.querySelector(".elements > img:nth-child(1)");
+          btn1.addEventListener("mousedown", (e) => {
+            // audio.play()
+            beatsound.loop = true;
+            beatsound.play();
+            btn1.classList.toggle("btnRelease");
+            btn1.classList.toggle("buttonPress");
+          });
+          btn1.addEventListener("mouseup", (e) => {
+            btn1.classList.toggle("btnRelease");
+            btn1.classList.toggle("buttonPress");
+            beatsound.pause();
+            beatsound.currentTime = 0;
+          });
+        }
+        //
+        // const btn2 = document.querySelector(".elements > img:nth-child(2)");
+        // btn2.addEventListener("mousedown", (e) => {
+        //   console.log(1);
+        //   btn2.classList.toggle("btnRelease");
+        //   btn2.classList.toggle("buttonPress");
+        // });
+        // btn2.addEventListener("mouseup", (e) => {
+        //   console.log(1);
+        //   btn2.classList.toggle("btnRelease");
+        //   btn2.classList.toggle("buttonPress");
+        // });
+        //
+      });
+    </script>
+
+    <style>
+      :root {
+        --main-background: #123456;
+        --main-text-color: antiquewhite;
+        --ligth-opacity: rgba(0, 0, 0, 0.12);
+        --round-border-radius: 50%;
+        --air-img: url("img/air-pink.png");
+        --earth-img: url("img/earth-green.png");
+        --water-img: url("img/water-blue.png");
+        --fire-img: url("img/fire-orange.png");
+      }
+      body {
+        background: var(--main-background);
+        color: var(--main-text-color);
+      }
+
+      h1::after {
+        --title: "Soundboard of elements";
+        content: var(--title);
+      }
+      h2::after {
+        --title: "Press the buttons";
+        content: var(--title);
+      }
+
+      embed {
+        display: none;
+      }
+
+      .elements > img {
+        background: var(--ligth-opacity);
+        border-radius: var(--round-border-radius);
+        /* content: url("img/earth-green.png"); */
+      }
+
+      .elements > img:nth-child(1) {
+        content: var(--air-img);
+      }
+      .elements > img:nth-child(2) {
+        content: var(--earth-img);
+      }
+      .elements > img:nth-child(3) {
+        content: var(--water-img);
+      }
+      .elements > img:nth-child(4) {
+        content: var(--fire-img);
+      }
+    </style>
+
+    <style>
+      .btnPress {
+        -webkit-animation-name: btnPress;
+        -webkit-animation-duration: 100ms;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: ease;
+        -webkit-animation-fill-mode: forwards;
+      }
+      @-webkit-keyframes btnPress {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(0.98);
+        }
+      }
+
+      .btnRelease {
+        -webkit-animation-name: btnRelease;
+        -webkit-animation-duration: 100ms;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: ease;
+        -webkit-animation-fill-mode: forwards;
+      }
+      @-webkit-keyframes btnRelease {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(0.98);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="full-hud">
+      <header>
+        <h1></h1>
+      </header>
+    </div>
+
+    <div class="full-main">
+      <h2></h2>
+      <div class="elements">
+        <img class="element" />
+        <img class="element" />
+        <img class="element" />
+        <img class="element" />
+      </div>
+    </div>
+  </body>
+</html>

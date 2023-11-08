@@ -1,0 +1,7 @@
+:root {
+  --overal-background: #123456;
+}
+
+body {
+  background: var(--overal-blackground);
+}

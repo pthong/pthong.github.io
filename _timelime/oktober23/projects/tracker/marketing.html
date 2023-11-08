@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Habbit Tracker</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-size: 14pt; */
+      }
+      body {
+        background: #f2f2f2;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      header {
+        background: rgb(2, 0, 36);
+        background: linear-gradient(
+          180deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(18, 52, 86, 1) 84%,
+          rgba(242, 242, 242, 1) 100%
+        );
+        color: white;
+        height: 100px;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        left: 0;
+      }
+
+      @media only screen and (max-width: 600px) {
+        nav {
+          display: none !important;
+          /* background-color: lightblue; */
+        }
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      nav > ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 39vw;
+        height: 100px;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      main {
+        margin-top: 100px;
+        width: 600px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="" alt="" />
+        <h1>Daily Habbit Tracker...</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Overview</a></li>
+          <li><a href="#">Inleiding</a></li>
+          <li><a href="#">Probleem</a></li>
+          <li><a href="#">Doelstelling</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Overview</h2>
+      Tracker app
+      <h2>Inleiding</h2>
+      begin gewoon met tracken
+      <h2>Doelstelling</h2>
+      het tracken van leven
+      <h2>Overview</h2>
+      <ul>
+        <li>Tracken je mood</li>
+
+        <li>tracken van hoeveel je uitgeeft</li>
+        <li>tracken van aantal pushups</li>
+        <li>tracken van je dag</li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </main>
+  </body>
+</html>
