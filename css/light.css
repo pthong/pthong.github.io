@@ -1,3 +1,24 @@
+:root{
+  --main-color: hsla(210, 65%, 20%, 1);   
+  --main-color-second: hsla(174, 65%, 20%, 1);  /* - 36 */
+  --complementary-color: hsla(12, 65%, 20%, 1); /* - 180 - 18 */
+  --complementary-color-left: hsla(3, 65%, 20%, 1); /* - 9 */
+  --complementary-color-right: hsla(20, 65%, 20%, 1); /* + 9 */
+
+
+  --main-color-light-90: hsla(210, 65%, 90%, 1);   
+  --main-color-second-light-90: hsla(174, 65%, 90%, 1);  
+  --complementary-color-light-90: hsla(12, 65%, 90%, 1); 
+  --complementary-color-left-light-90: hsla(3, 65%, 90%, 1); 
+  --complementary-color-right-light-90: hsla(20, 65%, 90%, 1); 
+
+  --main-color-light-80: hsla(210, 65%, 80%, 1);   
+  --main-color-second-light-80: hsla(174, 65%, 80%, 1);  
+  --complementary-color-light-80: hsla(12, 65%, 80%, 1);  
+  --complementary-color-left-light-80: hsla(3, 65%, 80%, 1); 
+  --complementary-color-right-light-80: hsla(20, 65%, 80%, 1); 
+  
+}
 * {
   margin: 0;
   padding: 0;
@@ -7,19 +28,32 @@
 body {
   display:grid;
   grid-template-columns: 1fr 1fr;
-  background-image: url(../img/bg.png);
+  /* background-image: url(../img/bg.png); */
+  background:#f2f2f2;
   height: 100vh;
   overflow: hidden;
 }
 
+body{filter: grayscale(1);}
+
 p::selection,
-h1::selection,
-h2::selection,
-h3::selection,
 li::selection,
 span::selection,
 br::selection{
-  background:yellow;
+  background:yellow; 
+}
+
+h1::selection,
+h2::selection,
+h3::selection{
+  background:green;
+
+}
+
+
+
+a::selection{
+  background:transparent;
 }
 
 ul, ol{
@@ -28,7 +62,11 @@ ul, ol{
 
 p, span, ol, ul, a{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #4d4d4d;
+  /* color: #444; */
+}
+
+h2{
+  /* color:#444; */
 }
 
 li:hover{
@@ -41,26 +79,112 @@ a, span {
   text-decoration: none;
 }
 
-a:hover{
-  text-decoration: dotted;
-}
 
 
-body > * {
+
+body > .right {
   padding:10em 4em;
 }  
 
-body > .left{
+/* body > .left{
   padding-left:10em;
 }
 
 body > .left > *{
   margin-bottom: 10em;
+
 }
 body > .right > *{
   margin-bottom: 4em;
+} */
+
+body> .left{
+  display:grid;
+  grid-template-columns: 100px auto;
+  grid-template-rows: 8fr 3fr;
 }
 
+/* my name */
+.left>:nth-child(1){
+  grid-row: 1/3;
+  writing-mode: tb-rl;
+  text-align: center;
+  transform: rotate(-180deg);
+  /* background:hsla(222, 90%, 15%, 1); */
+  /* background: hsla(210, 65%, 20%, 1); */
+  background: var(--main-color);
+}
+.left>:nth-child(1)>h1{
+  font-size: 32pt;
+  color: hsla(210, 65%, 80%, 1);
+  color:var(--main-color-light-90);
+}
+
+.left>:nth-child(1)>h2{
+  font-size: 18pt;
+  color:hsla(210, 65%, 70%, 1);
+  color: var(--main-color-light-80)
+}
+
+/* main navigation */
+.left>:nth-child(2)>ul{
+  display:grid;
+  /* background:green; */
+  grid-template-rows: auto auto auto auto;
+  height: 100%;
+  /* text-align: center; */
+  font-size: 1em;
+}
+
+.left>:nth-child(2)>ul>li{
+  display: flex;
+  align-items: center;
+  /* justify-content: end; */
+  padding:0 10%;
+  height:100%;
+  /* font-size: 32pt; */
+}
+.left>:nth-child(2)>ul>li .title{
+  font-size: 32pt;
+}
+
+.left>:nth-child(2)>ul>li:nth-child(1){
+  background: var(--main-color-second);
+  color: var(--main-color-second-light-80);
+}
+.left>:nth-child(2)>ul>li:nth-child(2){
+  background:var(--complementary-color-left);
+  color: var(--complementary-color-left-light-80);
+}
+.left>:nth-child(2)>ul>li:nth-child(3){
+  background: var(--complementary-color);
+  color: var(--complementary-color-light-80);
+}
+.left>:nth-child(2)>ul>li:nth-child(4){
+  background:var(--complementary-color-right);
+  color: var(--complementary-color-light-80);
+
+}
+
+
+
+/* analogous */
+/* .left>:nth-child(2)>ul>li:nth-child(1){
+  background:hsla(202, 90%, 15%, 1);
+  color:hsla(202, 90%, 80%, 1);
+}
+.left>:nth-child(2)>ul>li:nth-child(2){
+  background:hsla(182, 90%, 15%, 1);
+  color:hsla(182, 90%, 80%, 1);
+}
+.left>:nth-child(2)>ul>li:nth-child(3){
+  background:hsla(162, 90%, 15%, 1);
+  color:hsla(162, 90%, 80%, 1);
+}
+.left>:nth-child(2)>ul>li:nth-child(4){
+  background:hsla(142, 90%, 15%, 1);
+  color:hsla(142, 90%, 80%, 1);
+} */
 
 
 body > .right{
@@ -74,5 +198,5 @@ body > .right{
 
 .socials__nav img:hover, a:hover{
   background:#eee;
-  border-radius: 5px;
+
 }
